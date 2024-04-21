@@ -203,26 +203,26 @@
 		});	
 		
 		jQuery(".orange-bg").on('click',function(){
-			jQuery(".logo-header img").attr("src", "images/logo.png");
-			jQuery(".footer-logo .text-center img").attr("src", "images/logo.png");
+			jQuery(".logo-header img").attr("src", "images/hungrygologo.png");
+			jQuery(".footer-logo .text-center img").attr("src", "images/hungrygologo.png");
 			return false;
 		});
 
 		jQuery(".strong-blue-bg").on('click',function(){
-			jQuery(".logo-header img").attr("src", "images/logo2.png");
-			jQuery(".footer-logo .text-center img").attr("src", "images/logo2.png");
+			jQuery(".logo-header img").attr("src", "images/hungrygologo1.png");
+			jQuery(".footer-logo .text-center img").attr("src", "images/hungrygologo1.png");
 			return false;
 		});
 
 		jQuery(".moderate-green-bg").on('click',function(){
-			jQuery(".logo-header img").attr("src", "images/logo3.png");
-			jQuery(".footer-logo .text-center img").attr("src", "images/logo3.png");
+			jQuery(".logo-header img").attr("src", "images/hungrygologo3.png");
+			jQuery(".footer-logo .text-center img").attr("src", "images/hungrygologo3.png");
 			return false;
 		});
 
 		jQuery(".vivid-yellow-bg").on('click',function(){
-			jQuery(".logo-header img").attr("src", "images/logo4.png");
-			jQuery(".footer-logo .text-center img").attr("src", "images/logo4.png");
+			jQuery(".logo-header img").attr("src", "images/hungrygologo2.png");
+			jQuery(".footer-logo .text-center img").attr("src", "images/hungrygologo2.png");
 			return false;
 		});
 
