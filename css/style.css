@@ -942,6 +942,7 @@ html, body{ height: 100%; }
     width: 100%;
     overflow: hidden;
     background: #000;
+    height: 250px;
 }
 .sf-team .text-col {
     float: left;
