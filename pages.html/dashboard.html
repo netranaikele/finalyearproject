@@ -6,19 +6,98 @@
     <title>User Dashboard</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    h2 {
+        margin-top: 0;
+    }
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .personal-info {
+        margin-top: 20px;
+    }
+    .personal-info label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .personal-info input {
+        width: calc(100% - 10px);
+        padding: 5px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+    .review-section {
+        margin-top: 20px;
+    }
+    .logout-btn {
+        margin-top: 20px;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .logout-btn:hover {
+        background-color: #c82333;
+    }
+</style>
+</head>
 <body>
-    <div class="dashboard-container">
-        <h2>Welcome to Dashboard</h2>
-        <p>User: <span id="username"></span></p>
-        <p>this is your dashboard</p>
-    </div>
 
-    <div class="logo">
-        <a class="navbar-brand js-scroll-trigger logo-header" href="#">
-            <img src="./images/hungrygologo.png" alt=""style="height: 40px;width:170px;magin-top:40px;">
-        </a>
+<div class="container">
+    <h2>User Dashboard</h2>
+    <div class="profile-photo">
+        <img src="user_photo.jpg" alt="User Photo" style="width: 100%;">
     </div>
+    <div class="personal-info">
+        <h3>Personal Information</h3>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" value="John">
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" value="Doe">
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" value="johndoe@example.com">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone">
+    </div>
+    <div class="search-history">
+        <h3>Search History</h3>
+        <!-- Add content for search history here -->
+    </div>
+    <div class="review-section">
+        <h3>Review Section</h3>
+        <!-- Add content for reviews here -->
+    </div>
+    <button class="logout-btn" onclick="logout()">Log Out</button>
+</div>
 
-    <script src="../js/dashboard.js"></script>
+<script>
+    function logout() {
+        // Perform logout actions, such as clearing session storage or redirecting to logout page
+        alert("Logged out successfully!");
+    }
+</script>
+
 </body>
+
 </html>
