@@ -3,6 +3,7 @@
 
 <head>
 
+
     <!-- Basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +12,8 @@
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
 
     <!-- Site Metas -->
-    <title>Food Funday Restaurant - One page HTML Responsive</title>
-    
+   
+
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -22,16 +23,20 @@
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/map.css">
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <!-- Site CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="./css/responsive.css">
     <!-- color -->
-    <link id="changeable-colors" rel="stylesheet" href="css/colors/orange.css" />
+    <link id="changeable-colors" rel="stylesheet" href="./css/colors/orange.css" />
 
     <!-- Modernizer -->
-    <script src="js/modernizer.js"></script>
+    <script src="./js/modernizer.js"></script>
+    <script src="./js/map.js"></script>
+
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -72,9 +77,9 @@
                                     <li><a href="#our_team">Team</a></li>
                                     <li><a href="#gallery">Gallery</a></li>
                                     <li><a href="#blog">Blog</a></li> 
-                                    <li><a href="#reservation">Reservaion</a></li>
+                                    <li><a href="#reservation">Reservation</a></li>
                                     <li><a href="#footer">Contact us</a></li>
-                                    <li><a href="./pages.html/dashboard.html">Dashboard</a></li>
+                                   
                                     <li><a href="./pages.html/login.html">Login</a></li>
                                 </ul>
                             </div>
@@ -121,27 +126,102 @@
 <!--maps-->
 
 
-<div id="location" class="about-main pad-top-100 pad-bottom-100">
-    <div class="container">
-      
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
-                    <h2 class="block-title"> Find Restaurant Near you.. </h2>
-                    <div class="map-locator">
-                      <script src="https://maps.googleapis.com/maps/api/js?AIzaSyDOwkTGuRkgi1_F7e5z6YGvkRHyWJczB14"></script>
-                      <label for="location">Enter Location:</label>
-        <input type="text" id="location" placeholder="Enter a location">
-                     
-                      <div id="map" style="height:400px;width:1200px">
-                    </div>
-                
-                </div>
-            </div>
-            </div>
-            </div>
-            </div>
-    
-        
+<html>
+<head>
+  <title>Find Nearby Restaurants</title>
+  <!-- Include Leaflet CSS and JavaScript -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <!-- Include Leaflet Marker Cluster CSS and JavaScript -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
+  
+</head>
+<body>
+    <div id="about" class="about-main pad-top-100 pad-bottom-100">
+        <div class="container">
+            <div class="row">
+                        <h2 class="block-title"> Find Nearby Restaurant </h2>
+  <!-- Create a div to hold the map -->
+  <div id="map"></div>
+
+  <!-- Input form for address -->
+  <form id="locationForm">
+    <label for="address">Enter your city:</label><br>
+    <input type="text" id="address" name="address" placeholder="E.g., New Delhi" required><br>
+    <button type="submit">Find Nearby Restaurants</button>
+  </form>
+
+  <!-- Restaurant list -->
+  <div id="restaurantList">
+    <h3>Top 10 Nearby Restaurants</h3>
+    <ul id="restaurants"></ul>
+  </div>
+
+  <script>
+    var map = L.map('map').setView([20.5937, 78.9629], 5); // Set initial coordinates to India and zoom level
+
+    // Add a base map layer (you can use different tile providers)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Create a marker cluster group
+    var markers = L.markerClusterGroup();
+
+    // Function to add markers for nearby restaurants
+    function addNearbyRestaurants(latitude, longitude) {
+      // Simulate fetching nearby restaurants (replace with actual data)
+      var nearbyRestaurants = [
+        { name: 'Restaurant 1', latlng: [latitude + 0.01, longitude + 0.01], info: 'Restaurant 1 Info' },
+        { name: 'Restaurant 2', latlng: [latitude + 0.02, longitude + 0.02], info: 'Restaurant 2 Info' },
+        { name: 'Restaurant 3', latlng: [latitude - 0.01, longitude - 0.01], info: 'Restaurant 3 Info' },
+        { name: 'Restaurant 4', latlng: [latitude + 0.03, longitude + 0.03], info: 'Restaurant 4 Info' },
+        { name: 'Restaurant 5', latlng: [latitude - 0.02, longitude - 0.02], info: 'Restaurant 5 Info' },
+        { name: 'Restaurant 6', latlng: [latitude + 0.02, longitude - 0.01], info: 'Restaurant 6 Info' },
+        { name: 'Restaurant 7', latlng: [latitude - 0.01, longitude + 0.02], info: 'Restaurant 7 Info' },
+        { name: 'Restaurant 8', latlng: [latitude - 0.02, longitude + 0.01], info: 'Restaurant 8 Info' },
+        { name: 'Restaurant 9', latlng: [latitude + 0.01, longitude - 0.02], info: 'Restaurant 9 Info' },
+        { name: 'Restaurant 10', latlng: [latitude - 0.03, longitude + 0.03], info: 'Restaurant 10 Info' }
+      ];
+
+      // Clear existing markers
+      markers.clearLayers();
+
+      // Add markers for each nearby restaurant
+      nearbyRestaurants.forEach(function(restaurant) {
+        var marker = L.marker(restaurant.latlng).addTo(markers);
+        marker.bindPopup('<b>' + restaurant.name + '</b><br>' + restaurant.info);
+      });
+
+      // Add marker cluster group to the map
+      map.addLayer(markers);
+
+      // Zoom in to the location of the found restaurants
+      map.setView([latitude, longitude], 13); // Zoom level 13
+    }
+
+    // Submit handler for the location form
+    document.getElementById('locationForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var address = document.getElementById('address').value;
+
+      // Use the address to fetch coordinates (replace with actual geocoding)
+      var latitude = 20.5937; // Example latitude
+      var longitude = 78.9629; // Example longitude
+
+      // Clear previous results
+      document.getElementById('restaurants').innerHTML = '';
+
+      // Add nearby restaurants to the map
+      addNearbyRestaurants(latitude, longitude);
+    });
+  </script>
+</body>
+</html>
+
 
     <div id="about" class="about-main pad-top-100 pad-bottom-100">
         <div class="container">
@@ -149,21 +229,18 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
                         <h2 class="block-title"> About Us </h2>
-<<<<<<< HEAD
                         <h3>IT STARTED, QUITE SIMPLY, LIKE THIS...</h3>
                         <p> HungryGo strives to source local, sustainable and organic when possible. </p>
 
                         <p> We work hard to source premium ingredients and we cook everything from scratch with love. </p>
 
                         <p> We also do our best to pay our emplyes living wages and to reduce environmental footprint. </p>
-=======
                         <h3> LETS KNOW ABOUT US...</h3>
                         <p>Welcome to HungryGo, your go-to destination for discovering the best restaurants near you! Founded with a passion for good food and convenience, HungryGo aims to make dining out a delightful experience for everyone. </p>
 
                         <p> At HungryGo, we believe that food is more than just sustenance; it's an adventure, a cultural experience, and a joy that brings people together. With our intuitive search and filtering options, you can easily find restaurants based on cuisine, location, price range, and customer reviews, making it easier than ever to satisfy your cravings. </p>
 
                         <p> Our commitment to excellence doesn't stop at helping you find the perfect restaurant. We continuously strive to enhance our platform with the latest features and updates to ensure that you always have access to accurate information and a wide range of dining options. </p>
->>>>>>> fd0e4f29f94bbd7290103e2e296b4c0391e65756
                     </div>
                 </div>
                 <!-- end col -->
@@ -196,9 +273,9 @@
                                 <a href="#" class="item-hover">
                                     <div class="item-info">
                                         <div class="headline">
-                                            SALMON STEAK
+                                            palakpaneer
                                             <div class="line"></div>
-                                            <div class="dit-line">Lorem ipsum dolor sit amet, consectetur adip aliqua. Ut enim ad minim venia.</div>
+                                            <div class="dit-line">Palak paneer is a classic curried dish from North Indian cuisine made with fresh spinach, onions, spices, paneer and herbs.</div>
                                         </div>
                                     </div>
                                 </a>
@@ -210,9 +287,9 @@
                                 <a href="#" class="item-hover">
                                     <div class="item-info">
                                         <div class="headline">
-                                            ITALIAN PIZZA
+                                            Biryani
                                             <div class="line"></div>
-                                            <div class="dit-line">Lorem ipsum dolor sit amet, consectetur adip aliqua. Ut enim ad minim venia.</div>
+                                            <div class="dit-line">Biryani is a mixed rice dish, mainly popular in South Asia. It is made with rice, some type of meat and spices.</div>
                                         </div>
                                     </div>
                                 </a>
@@ -224,9 +301,9 @@
                                 <a href="#" class="item-hover">
                                     <div class="item-info">
                                         <div class="headline">
-                                            VEG. ROLL
+                                            Butter Chicken
                                             <div class="line"></div>
-                                            <div class="dit-line">Lorem ipsum dolor sit amet, consectetur adip aliqua. Ut enim ad minim venia.</div>
+                                            <div class="dit-line">Usually, it includes butter, cream, and cashew paste as a thickener. The tangy tomatoes, smokey Kasuri methi, and yogurt will give a special and attractive taste to the gravy.</div>
                                         </div>
                                     </div>
                                 </a>
@@ -238,9 +315,9 @@
                                 <a href="#" class="item-hover">
                                     <div class="item-info">
                                         <div class="headline">
-                                            SALMON STEAK
+                                            Dal Tadka
                                             <div class="line"></div>
-                                            <div class="dit-line">Lorem ipsum dolor sit amet, consectetur adip aliqua. Ut enim ad minim venia.</div>
+                                            <div class="dit-line">Dal Tadka is a popular Indian dish where cooked spiced lentils are finished with a tempering made of ghee/ oil and spices. </div>
                                         </div>
                                     </div>
                                 </a>
@@ -252,9 +329,9 @@
                                 <a href="#" class="item-hover">
                                     <div class="item-info">
                                         <div class="headline">
-                                            VEG. ROLL
+                                            PIZZA
                                             <div class="line"></div>
-                                            <div class="dit-line">Lorem ipsum dolor sit amet, consectetur adip aliqua. Ut enim ad minim venia.</div>
+                                            <div class="dit-line">Pizza is a traditional Italian dish typically consisting of a flat base of leavened wheat-based dough topped with tomato, cheese, and other ingredients.</div>
                                         </div>
                                     </div>
                                 </a>
@@ -1000,8 +1077,8 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
-                            <h2 class="ft-title color-white text-center"> Newsletter </h2>
-                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <h2 class="ft-title color-white text-center"> Register  for updated</h2>
+                            <p> Enter your Email</p>
                         </div>
                         <form>
                             <input id="email-input"  type="email" placeholder="Enter your e-mail id">
