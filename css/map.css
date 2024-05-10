@@ -1,0 +1,82 @@
+body {
+ 
+    font-family: Arial, sans-serif;
+  }
+
+  #map {
+    height: 600px;
+    width: 100%;
+  }
+
+  #locationForm {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  #locationForm label {
+    font-weight: bold;
+    color: #333;
+  }
+
+  #locationForm input[type="text"] {
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 70%;
+    transition: all 0.3s ease;
+  }
+
+  #locationForm input[type="text"]:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  }
+
+  #locationForm button {
+    padding: 12px 24px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  #locationForm button:hover {
+    background-color: #45a049;
+  }
+
+  #restaurantList {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  #restaurantList h3 {
+    margin-top: 0;
+    color: #333;
+  }
+
+  #restaurants {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #restaurants li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  #restaurants li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
