@@ -17,9 +17,9 @@
                 </div>
                 <div id="errorMsg"></div>
                 <div class="content">
-                    <form class="login" name="loginForm" onsubmit="return validateLoginForm()" method="POST">
-                        <input type="text" name="name" id="logName" placeholder="Username">
-                        <input type="password" name="password" id="logPassword" placeholder="Password">
+                    <form class="login" name="loginForm" onsubmit="return validateLoginForm()" method="POST" id="loginForm">
+                        <input type="text" name="name" id="username" placeholder="Username">
+                        <input type="password" name="password" id="password" placeholder="Password">
                         <div id="check">
                             <input type="checkbox" id="remember">
                             <label for="remember">Remember me</label>
@@ -36,9 +36,26 @@
         
     </body>
 <script>
-    function redirect() {
-        Window.location.href = "index.html"
-    }
+    const loginForm = document.getElementById("loginForm");
+    loginForm.addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      // Hardcoded credentials (replace with your desired usernames and passwords)
+      const validUsers = {
+        user1: "password1",
+        user2: "password2"
+      };
+
+      // Check if username and password match a valid user
+      if (validUsers[username] && validUsers[username] === password) {
+        window.location.href = "./../index.html"; // Redirect to index page on successful login
+      } else {
+        alert("Invalid username or password!");
+      }
+    });
 </script>
 
     <script src="../javascript/login.js"></script>
